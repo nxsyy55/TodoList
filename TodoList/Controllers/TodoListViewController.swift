@@ -24,7 +24,7 @@ class TodoListViewController: UITableViewController {
     }
 
     //MARK: - Tableview Datasource Methods
-// these two functions are a must to use any tableview!
+    // these two functions are a must to use any tableview!
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return itemArray.count
     }

@@ -13,7 +13,7 @@
 		FC5D74C821816A390034244B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FC5D74C721816A390034244B /* Assets.xcassets */; };
 		FC5D74CB21816A390034244B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC5D74C921816A390034244B /* LaunchScreen.storyboard */; };
 		FC66EE7822A38B8E00898041 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FC66EE7622A38B8E00898041 /* DataModel.xcdatamodeld */; };
-		FC66EE9B22A3A5DB00898041 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC66EE9A22A3A5DB00898041 /* CategoryViewController.swift */; };
+		FC66EEA122A3A82A00898041 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC66EEA022A3A82A00898041 /* CategoryViewController.swift */; };
 		FCB6DC7E22A023C800624040 /* ItemNotinUse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB6DC7D22A023C800624040 /* ItemNotinUse.swift */; };
 /* End PBXBuildFile section */
 
@@ -26,7 +26,7 @@
 		FC5D74CA21816A390034244B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FC5D74CC21816A390034244B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FC66EE7722A38B8E00898041 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
-		FC66EE9A22A3A5DB00898041 /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
+		FC66EEA022A3A82A00898041 /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		FCB6DC7D22A023C800624040 /* ItemNotinUse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemNotinUse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -61,16 +61,48 @@
 			isa = PBXGroup;
 			children = (
 				FC5D74C021816A350034244B /* AppDelegate.swift */,
-				FC5D74C221816A350034244B /* TodoListViewController.swift */,
-				FC66EE7622A38B8E00898041 /* DataModel.xcdatamodeld */,
-				FC5D74C421816A350034244B /* Main.storyboard */,
-				FC66EE9A22A3A5DB00898041 /* CategoryViewController.swift */,
-				FCB6DC7D22A023C800624040 /* ItemNotinUse.swift */,
-				FC5D74C721816A390034244B /* Assets.xcassets */,
-				FC5D74C921816A390034244B /* LaunchScreen.storyboard */,
+				FC66EE9C22A3A6A700898041 /* Controllers */,
+				FC66EE9D22A3A6C700898041 /* Data Model */,
+				FC66EE9E22A3A6D600898041 /* Views */,
+				FC66EE9F22A3A6E200898041 /* Supporting FIles */,
 				FC5D74CC21816A390034244B /* Info.plist */,
 			);
 			path = TodoList;
+			sourceTree = "<group>";
+		};
+		FC66EE9C22A3A6A700898041 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				FC66EEA022A3A82A00898041 /* CategoryViewController.swift */,
+				FC5D74C221816A350034244B /* TodoListViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		FC66EE9D22A3A6C700898041 /* Data Model */ = {
+			isa = PBXGroup;
+			children = (
+				FC66EE7622A38B8E00898041 /* DataModel.xcdatamodeld */,
+				FCB6DC7D22A023C800624040 /* ItemNotinUse.swift */,
+			);
+			path = "Data Model";
+			sourceTree = "<group>";
+		};
+		FC66EE9E22A3A6D600898041 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				FC5D74C421816A350034244B /* Main.storyboard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		FC66EE9F22A3A6E200898041 /* Supporting FIles */ = {
+			isa = PBXGroup;
+			children = (
+				FC5D74C721816A390034244B /* Assets.xcassets */,
+				FC5D74C921816A390034244B /* LaunchScreen.storyboard */,
+			);
+			path = "Supporting FIles";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -145,7 +177,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FC66EE9B22A3A5DB00898041 /* CategoryViewController.swift in Sources */,
+				FC66EEA122A3A82A00898041 /* CategoryViewController.swift in Sources */,
 				FC5D74C321816A350034244B /* TodoListViewController.swift in Sources */,
 				FC66EE7822A38B8E00898041 /* DataModel.xcdatamodeld in Sources */,
 				FCB6DC7E22A023C800624040 /* ItemNotinUse.swift in Sources */,
