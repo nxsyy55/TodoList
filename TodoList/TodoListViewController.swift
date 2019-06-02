@@ -7,34 +7,23 @@
 //
 
 import UIKit
+import CoreData
 
 class TodoListViewController: UITableViewController {
 
+    // MARK: - Remember you can use MARKS!
     var itemArray = [Item]()
     
-    let defaults = UserDefaults.standard
+    //!!!!! the key line !!!!
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     override func viewDidLoad() {
         super.viewDidLoad()
-      
-        let newItem1 = Item()
-        newItem1.title = "Find a job"
-        itemArray.append(newItem1)
         
-        let newItem2 = Item()
-        newItem2.title = "Fix the stock"
-        itemArray.append(newItem2)
-        
-        let newItem3 = Item()
-        newItem3.title = "Keep painting"
-        itemArray.append(newItem3)
-        
-        if let items = defaults.array(forKey: "TodoListArray") as? [Item] {
-            itemArray = items
-        }
+        loadItems()
     }
 
-//MARK - Tableview Datasource Methods
+    //MARK: - Tableview Datasource Methods
 // these two functions are a must to use any tableview!
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return itemArray.count
@@ -60,13 +49,17 @@ class TodoListViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
  
         itemArray[indexPath.row].done = !itemArray[indexPath.row].done
+        // or one can do, so many method to achieve one same goal!
+        // itemArrat[indexPath.row].setValue("False", forKey: "done")
         
+//        context.delete(itemArray[indexPath.row])
+//        itemArray.remove(at: indexPath.row)
+        
+        saveItems()
         tableView.deselectRow(at: indexPath, animated: true)
         
-        tableView.reloadData()
-        
     }
-    //MARK - Add New Items
+    //MARK: - Add New Items
     @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
         
         var textField = UITextField()
@@ -74,16 +67,15 @@ class TodoListViewController: UITableViewController {
         let alert = UIAlertController(title: "Add New", message: "hello", preferredStyle: .alert)
         
         let action = UIAlertAction(title: "Add Item", style: .default) { (action) in
+            
+            
             //what will happen once the user clicks the Add Item button
-
-            let newItem = Item()
+            
+            let newItem = Item(context: self.context)
             newItem.title = textField.text!
-
             self.itemArray.append(newItem)
-            
-            self.defaults.set(self.itemArray, forKey: "TodoListArray")
-            
-            self.tableView.reloadData()
+           
+            self.saveItems()
         }
         
         alert.addTextField { (alertTextField) in
@@ -95,5 +87,39 @@ class TodoListViewController: UITableViewController {
         alert.addAction(action)
         present(alert, animated:  true, completion:  nil)
     }
+
+
+    func saveItems() {
+    
+        do {
+            try context.save()
+        } catch {
+            print("error")
+        }
+        self.tableView.reloadData()
 }
 
+    func loadItems() {
+
+        // it's like a common couple of lines, just remember
+        let request: NSFetchRequest<Item> = Item.fetchRequest()
+        
+        do {
+            try context.fetch(request)
+        } catch  {
+            print("Error fetching data from context \(error)")
+        }
+    }
+    
+}
+
+
+// always keep the codes in chopps
+extension TodoListViewController: UISearchBarDelegate {
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        let request : NSFetchRequest<Item> = Item.fetchRequest()
+        
+        print(searchBar.text!)
+    }
+}
